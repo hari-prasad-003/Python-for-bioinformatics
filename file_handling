@@ -1,0 +1,16 @@
+from Bio import SeqIO
+
+# Enter the input file
+file_name = "sequence.fasta"
+
+# create a output file
+with open("output.fasta","w") as of:
+    for record in SeqIO.parse(file_name, "fasta"):
+        SeqIO.write(record, of, "fasta")
+
+# seqIO.parse() reads one record at a time (streaming mode). Never loads more than one record into memory
+# Each record in a SeqRecord object has
+#       record.id --> sequence name
+#       record.seq --> sequence
+#       record.description --> header line
+
